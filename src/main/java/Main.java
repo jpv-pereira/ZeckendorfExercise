@@ -29,8 +29,7 @@ public class Main {
         ArrayList<Integer> fibonacciArray = getFibonacciArray(max);
 
         for(int i = min; i <= max; i++ ) {
-            //System.out.println(i + " - " + convertNumberToZeckendorf(i, fibonacciArray));
-            convertNumberToZeckendorf(i, fibonacciArray);
+            System.out.println(i + " - " + convertNumberToZeckendorf(i, fibonacciArray));
         }
     }
 
@@ -42,7 +41,6 @@ public class Main {
         StringBuilder result = new StringBuilder();
         int sum = 0;
         for (int j = fibonacciArray.size() - 1; j > 0; j--) {
-            System.out.println((sum + fibonacciArray.get(j)));
             if (fibonacciArray.get(j) > number) {
                 continue;
             } else if ((sum + fibonacciArray.get(j)) > number) {
@@ -61,6 +59,10 @@ public class Main {
         getFibonacciArray.add(1);
         getFibonacciArray.add(1);
         getFibonacciArray.add(2);
+
+        if(maxGenerated < 5) {
+            maxGenerated = 5;
+        }
 
         for(int i = getFibonacciArray.size(); i < maxGenerated; i++) {
             int sumArrayElements = getFibonacciArray.get(i - 1) + getFibonacciArray.get(i - 2);
