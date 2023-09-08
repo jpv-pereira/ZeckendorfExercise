@@ -34,14 +34,6 @@ public class Tests {
     public void testGetFibonacciArray() {
         buildFibonacciArray();
 
-        ArrayList<Integer> testFibonacciArray = new ArrayList<>();
-        testFibonacciArray.add(1);
-        testFibonacciArray.add(1);
-        testFibonacciArray.add(2);
-        testFibonacciArray.add(3);
-        testFibonacciArray.add(5);
-        testFibonacciArray.add(8);
-
         ArrayList<Integer> fibonacciArray = Main.getFibonacciArray(6);
         assertEquals(testFibonacciArray, fibonacciArray);
     }

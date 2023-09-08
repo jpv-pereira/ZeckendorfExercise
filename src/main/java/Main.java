@@ -1,16 +1,36 @@
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 
 public class Main {
     public static void main(String[] args) {
-        printZeckendorf(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+        int firstArgument = 0;
+        int secondArgument = 0;
+
+        try {
+            firstArgument = Integer.parseInt(args[0]);
+            secondArgument = Integer.parseInt(args[1]);
+        } catch(ArrayIndexOutOfBoundsException exception) {
+            System.out.println("Arguments missing");
+            System.exit(-1);
+        } catch(NumberFormatException exception) {
+            System.out.println("Arguments only accept integers");
+            System.exit(-1);
+        }
+        if (Integer.parseInt(args[0]) < 0 || Integer.parseInt(args[1]) < 0) {
+            System.out.println("Argument integers have to be positive numbers");
+            System.exit(1);
+        }
+        printZeckendorf(firstArgument, secondArgument);
     }
 
     public static void printZeckendorf(int min, int max) {
         ArrayList<Integer> fibonacciArray = getFibonacciArray(max);
 
         for(int i = min; i <= max; i++ ) {
-            System.out.println(i + " - " + convertNumberToZeckendorf(i, fibonacciArray));
+            //System.out.println(i + " - " + convertNumberToZeckendorf(i, fibonacciArray));
+            convertNumberToZeckendorf(i, fibonacciArray);
         }
     }
 
@@ -22,6 +42,7 @@ public class Main {
         StringBuilder result = new StringBuilder();
         int sum = 0;
         for (int j = fibonacciArray.size() - 1; j > 0; j--) {
+            System.out.println((sum + fibonacciArray.get(j)));
             if (fibonacciArray.get(j) > number) {
                 continue;
             } else if ((sum + fibonacciArray.get(j)) > number) {
@@ -39,12 +60,18 @@ public class Main {
         ArrayList<Integer> getFibonacciArray = new ArrayList<>();
         getFibonacciArray.add(1);
         getFibonacciArray.add(1);
+        getFibonacciArray.add(2);
 
         for(int i = getFibonacciArray.size(); i < maxGenerated; i++) {
-            getFibonacciArray.add(getFibonacciArray.get(i - 1) + getFibonacciArray.get(i - 2));
+            int sumArrayElements = getFibonacciArray.get(i - 1) + getFibonacciArray.get(i - 2);
+            if (sumArrayElements < 0) {
+                break;
+            }
+            getFibonacciArray.add(sumArrayElements);
         }
 
         return getFibonacciArray;
     }
 }
+
 
