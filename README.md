@@ -1,4 +1,4 @@
-# ZeckendorExercise
+# ZeckendorfExercise
  
 Instructions:
 
