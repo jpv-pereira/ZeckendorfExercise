@@ -1,6 +1,6 @@
 # ZeckendorfExercise
  
-## Instructions
+## Instructions for java
 
 **1.** Package the source code with maven: mvn package
 
